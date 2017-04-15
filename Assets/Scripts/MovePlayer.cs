@@ -17,6 +17,7 @@ public class MovePlayer : MonoBehaviour {
 	public bool canDash = true;
 	public string dash = "Dash_P1";
 	public float dashDelay = 0f;
+	public Animator anim;
 
 	//Set on player in hierarchy
 	public bool faceRight = true;
@@ -24,12 +25,15 @@ public class MovePlayer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rd2 = GetComponent<Rigidbody2D> ();	
+		anim = GetComponent<Animator> ();
 	}
 	 
 	// Update is called once per frame
 	void FixedUpdate () {
 
 		float moveHorizontal = Input.GetAxis (horizontalCtrl);
+
+		anim.SetFloat("move", Mathf.Abs(moveHorizontal));
 
 		if (moveHorizontal < 0 && !faceRight) {
 			flip ();
@@ -64,9 +68,11 @@ public class MovePlayer : MonoBehaviour {
 		if (Input.GetButtonDown (dash)) {
 			if (canDash) {
 				if (faceRight) {
+					anim.Play ("dash");
 					rd2.AddForce (new Vector2 (-dashForce, 0));
 					canDash = false;
 				} else {
+					anim.Play ("dash");
 					rd2.AddForce (new Vector2 (dashForce, 0));
 					canDash = false;
 				}
@@ -82,7 +88,7 @@ public class MovePlayer : MonoBehaviour {
 			
 	}
 
-	void flip(){
+	public void flip(){
 		faceRight = !faceRight;
 
 		Vector3 theScale = transform.localScale;
