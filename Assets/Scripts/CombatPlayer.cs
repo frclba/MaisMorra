@@ -7,7 +7,7 @@ public class CombatPlayer : MonoBehaviour {
 	public string punch = "Punch_P1";
 	public bool contact = false;
 	public Transform testContact;
-	public float attackForce = 500f;
+	public float attackForce = 2000f;
 	public bool canAttack = true;
 	private float delayAttack = 0f;
 	public float maxSpeed = 5f;
@@ -24,10 +24,16 @@ public class CombatPlayer : MonoBehaviour {
 
 		delayAttack += Time.deltaTime;
 
-		if (delayAttack > 2) {
+		if (delayAttack > 1) {
 			canAttack = true;
 		}
 
+		if (Input.GetButtonDown (punch) && canAttack) {
+			anim.Play ("punch");
+			canAttack = false;
+			delayAttack = 0;
+		}
+	
 	}
 
 	void OnCollisionStay2D(Collision2D other){
@@ -43,8 +49,10 @@ public class CombatPlayer : MonoBehaviour {
 
 			if (GetComponent<MovePlayer>().faceRight) {
 				other.gameObject.GetComponent<MovePlayer> ().rd2.AddForce (new Vector2 (-attackForce, 0));
+				//other.gameObject.GetComponent<MovePlayer>().rd2.velocity = new Vector2 (-attackForce, 0);
 			} else {
 				other.gameObject.GetComponent<MovePlayer> ().rd2.AddForce (new Vector2 (attackForce, 0));
+				//other.gameObject.GetComponent<MovePlayer>().rd2.velocity = new Vector2 (attackForce, 0);
 			}
 
 			//other.gameObject.GetComponent<MovePlayer> ().rd2.AddForce (new Vector2(attackForce,0));
