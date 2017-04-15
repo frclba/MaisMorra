@@ -9,6 +9,7 @@ public class MovePlayer : MonoBehaviour {
 	public float moveForce = 365f;
 	public float jumpForce = 750f;
 	public bool estaNoSolo;
+	public bool canDoubleJump = true;
 	public Transform testSolo;
 	public int jumps = 0;
 
@@ -37,11 +38,32 @@ public class MovePlayer : MonoBehaviour {
 
 		estaNoSolo = Physics2D.Linecast(transform.position, testSolo.position, 1 << LayerMask.NameToLayer("Water"));  
 
-		if(Input.GetButtonDown("Jump") && (estaNoSolo || jumps < 2)) {
-			rd2.AddForce (transform.up * jumpForce);
-			jumps = jumps + 1;
-		}
+	//	if (Input.GetButtonDown ("Jump")) {
+	//		if (estaNoSolo) {
+	//			rd2.AddForce (transform.up * jumpForce);
+	//			canDoubleJump = true;
+	//		} else {
+	//			if (canDoubleJump) {
+	//				canDoubleJump = false;
+	//				//rd2.velocity.y = 0;
+	//				rd2.AddForce (transform.up * jumpForce);
+	//			}
+	//		}
+	//	}
 
-			jumps = 0;
+		if (Input.GetButtonDown ("Jump")) {
+			if (estaNoSolo) {
+				rd2.velocity = new Vector2(rd2.velocity.x, 0);
+				rd2.AddForce (new Vector2(0, jumpForce));
+				canDoubleJump = true;
+			} else {
+				if (canDoubleJump) {
+					canDoubleJump = false;
+					rd2.velocity = new Vector2(rd2.velocity.x, 0);
+					rd2.AddForce (new Vector2(0, jumpForce));
+				}
+			}
+		}
+			
 	}
 }
