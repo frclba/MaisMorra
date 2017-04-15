@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: bb4bce359c7552746bbfc6fba3899761
+folderAsset: yes
+timeCreated: 1492234818
+=======
 guid: e58cea3e6ac5dfd4385c030894fd74b7
 folderAsset: yes
 timeCreated: 1492237018
+>>>>>>> mechanis
 licenseType: Free
 DefaultImporter:
   userData: 
