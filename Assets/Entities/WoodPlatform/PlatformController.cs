@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class PlatformController : MonoBehaviour {
 	public GameObject platformPrefab;
+	public float platformSpeed;
 
-	void Start () {
-		
+	GameObject CreatePlatform () {
+		GameObject platform = Instantiate(platformPrefab, transform.position, Quaternion.identity) as GameObject;
+		return platform;
 	}
-	
-	void OnDrawGizmos(){
-		
+
+	void movePlatformUp(GameObject platform){
+		platform.GetComponent<Rigidbody2D>().velocity = new Vector3(0, platformSpeed, 0);
 	}
-	
+
 	//do the movimentation
 	void Update () {
-		//transform.position += new Vector3(direction * speed * Time.deltaTime,0,0);
+		if(Input.GetKeyDown(KeyCode.G)){
+			print("instantiating platform 1");
+			movePlatformUp(CreatePlatform());
+		}
 	}
 }
