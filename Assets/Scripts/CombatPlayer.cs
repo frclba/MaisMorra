@@ -6,7 +6,7 @@ public class CombatPlayer : MonoBehaviour {
 
 	public string punch = "Punch_P1";
 	public bool contact = false;
-	public Transform testContact;
+	public GameObject testContact;
 	public float attackForce = 2000f;
 	public bool canAttack = true;
 	private float delayAttack = 0f;
@@ -20,7 +20,7 @@ public class CombatPlayer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		contact = Physics2D.Linecast(transform.position, testContact.position, 1 << LayerMask.NameToLayer("Player")); 
+		//contact = Physics2D.Linecast(transform.position, testContact.position, 1 << LayerMask.NameToLayer("Player")); 
 
 		delayAttack += Time.deltaTime;
 
@@ -36,7 +36,7 @@ public class CombatPlayer : MonoBehaviour {
 	
 	}
 
-	void OnCollisionStay2D(Collision2D other){
+	/* void OnCollisionStay2D(Collision2D other){
 		
 		if (Input.GetButtonDown (punch) && contact && other.gameObject.tag == "Player" && canAttack) {
 			anim.Play ("punch");
@@ -57,6 +57,35 @@ public class CombatPlayer : MonoBehaviour {
 
 			//other.gameObject.GetComponent<MovePlayer> ().rd2.AddForce (new Vector2(attackForce,0));
 
+			//Setando velocidade máxima do empurrão
+			if(Mathf.Abs(other.gameObject.GetComponent<MovePlayer>().rd2.velocity.x) > maxSpeed)
+				other.gameObject.GetComponent<MovePlayer>().rd2.velocity = new Vector2(Mathf.Sign(other.gameObject.GetComponent<MovePlayer>().rd2.velocity.x) * maxSpeed, other.gameObject.GetComponent<MovePlayer>().rd2.velocity.y);
+
+			canAttack = false;
+			delayAttack = 0;
+			//anim.SetBool("punch", false);
+		}
+	}*/
+
+	void OnTriggerStay2D(Collider2D other){
+
+		if (Input.GetButtonDown (punch) && canAttack && other.gameObject.tag == "Player") {
+			anim.Play ("punch");
+			//anim.SetBool("punch", true);
+			if(GetComponent<MovePlayer>().faceRight == other.gameObject.GetComponent<MovePlayer>().faceRight){
+				other.gameObject.GetComponent<MovePlayer> ().flip ();
+			}
+
+			other.gameObject.GetComponent<Animator> ().Play ("caindo");
+
+			if (GetComponent<MovePlayer>().faceRight) {
+				other.gameObject.GetComponent<MovePlayer> ().rd2.AddForce (new Vector2 (-attackForce, 0));
+				Debug.Log("Empurrou");
+			} else {
+				other.gameObject.GetComponent<MovePlayer> ().rd2.AddForce (new Vector2 (attackForce, 0));
+				Debug.Log ("Empurrou");
+			}
+				
 			//Setando velocidade máxima do empurrão
 			if(Mathf.Abs(other.gameObject.GetComponent<MovePlayer>().rd2.velocity.x) > maxSpeed)
 				other.gameObject.GetComponent<MovePlayer>().rd2.velocity = new Vector2(Mathf.Sign(other.gameObject.GetComponent<MovePlayer>().rd2.velocity.x) * maxSpeed, other.gameObject.GetComponent<MovePlayer>().rd2.velocity.y);
