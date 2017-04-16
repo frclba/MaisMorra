@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Tiled2Unity generated xml data-->
+<!--Do not modify by hand-->
+<!--Last exported: 16/04/2017 10:29:35-->
+<Tiled2Unity version="1.0.10.3">
+  <AssignMaterial mesh="mesh_0001" material="espinho_macabro" />
+  <Prefab name="espinhos" orientation="Orthogonal" staggerAxis="Y" staggerIndex="Odd" hexSideLength="0" numLayers="1" numTilesWide="20" numTilesHigh="20" tileWidth="30" tileHeight="30" exportScale="1" mapWidthInPixels="600" mapHeightInPixels="600" backgroundColor="#808080">
+    <GameObject name="Camada de Tiles 1" x="0" y="0" z="0">
+      <TileLayer opacity="1" offsetX="0" offsetY="0" />
+      <GameObject name="espinho_macabro" copy="mesh_0001" sortingLayerName="" sortingOrder="0" opacity="1" />
+      <GameObject name="Collision">
+        <PolygonCollider2D>
+          <Path>330,0 300,0 316,-30</Path>
+          <Path>360,0 330,0 346,-30</Path>
+          <Path>390,0 360,0 376,-30</Path>
+          <Path>420,0 390,0 406,-30</Path>
+          <Path>450,0 420,0 436,-30</Path>
+          <Path>480,0 450,0 466,-30</Path>
+          <Path>510,0 480,0 496,-30</Path>
+          <Path>540,0 510,0 526,-30</Path>
+          <Path>570,0 540,0 556,-30</Path>
+          <Path>600,0 570,0 586,-30</Path>
+          <Path>30,0 0,0 16,-30</Path>
+          <Path>60,0 30,0 46,-30</Path>
+          <Path>90,0 60,0 76,-30</Path>
+          <Path>120,0 90,0 106,-30</Path>
+          <Path>150,0 120,0 136,-30</Path>
+          <Path>180,0 150,0 166,-30</Path>
+          <Path>210,0 180,0 196,-30</Path>
+          <Path>240,0 210,0 226,-30</Path>
+          <Path>270,0 240,0 256,-30</Path>
+          <Path>300,0 270,0 286,-30</Path>
+        </PolygonCollider2D>
+      </GameObject>
+    </GameObject>
+  </Prefab>
+  <ImportMesh filename="espinhos.obj">IyBXYXZlZnJvbnQgT0JKIGZpbGUgYXV0b21hdGljYWxseSBnZW5lcmF0ZWQgYnkgVGlsZWQyVW5pdHkNCg0KIyBWZXJ0aWNlcyAoQ291bnQgPSA0MikNCnYgMCAtMzAgMA0KdiAtMzAgLTMwIDANCnYgLTMwIDAgMA0KdiAwIDAgMA0KdiAtNjAgLTMwIDANCnYgLTYwIDAgMA0KdiAtOTAgLTMwIDANCnYgLTkwIDAgMA0KdiAtMTIwIC0zMCAwDQp2IC0xMjAgMCAwDQp2IC0xNTAgLTMwIDANCnYgLTE1MCAwIDANCnYgLTE4MCAtMzAgMA0KdiAtMTgwIDAgMA0KdiAtMjEwIC0zMCAwDQp2IC0yMTAgMCAwDQp2IC0yNDAgLTMwIDANCnYgLTI0MCAwIDANCnYgLTI3MCAtMzAgMA0KdiAtMjcwIDAgMA0KdiAtMzAwIC0zMCAwDQp2IC0zMDAgMCAwDQp2IC0zMzAgLTMwIDANCnYgLTMzMCAwIDANCnYgLTM2MCAtMzAgMA0KdiAtMzYwIDAgMA0KdiAtMzkwIC0zMCAwDQp2IC0zOTAgMCAwDQp2IC00MjAgLTMwIDANCnYgLTQyMCAwIDANCnYgLTQ1MCAtMzAgMA0KdiAtNDUwIDAgMA0KdiAtNDgwIC0zMCAwDQp2IC00ODAgMCAwDQp2IC01MTAgLTMwIDANCnYgLTUxMCAwIDANCnYgLTU0MCAtMzAgMA0KdiAtNTQwIDAgMA0KdiAtNTcwIC0zMCAwDQp2IC01NzAgMCAwDQp2IC02MDAgLTMwIDANCnYgLTYwMCAwIDANCg0KIyBUZXh0dXJlIGNvb3JpZGluYXRlcyAoQ291bnQgPSA0KQ0KdnQgMC4wMDAxMjIwNzAzIDAuMDAwMTIyMDcwMw0KdnQgMC45OTk4Nzc5IDAuMDAwMTIyMDcwMw0KdnQgMC45OTk4Nzc5IDAuOTk5ODc3OQ0KdnQgMC4wMDAxMjIwNzAzIDAuOTk5ODc3OQ0KDQojIE5vcm1hbA0Kdm4gMCAwIC0xDQoNCiMgR3JvdXBzIChDb3VudCA9IDEpDQoKZyBtZXNoXzAwMDEKZiAxLzEvMSAyLzIvMSAzLzMvMSA0LzQvMQpmIDIvMS8xIDUvMi8xIDYvMy8xIDMvNC8xCmYgNS8xLzEgNy8yLzEgOC8zLzEgNi80LzEKZiA3LzEvMSA5LzIvMSAxMC8zLzEgOC80LzEKZiA5LzEvMSAxMS8yLzEgMTIvMy8xIDEwLzQvMQpmIDExLzEvMSAxMy8yLzEgMTQvMy8xIDEyLzQvMQpmIDEzLzEvMSAxNS8yLzEgMTYvMy8xIDE0LzQvMQpmIDE1LzEvMSAxNy8yLzEgMTgvMy8xIDE2LzQvMQpmIDE3LzEvMSAxOS8yLzEgMjAvMy8xIDE4LzQvMQpmIDE5LzEvMSAyMS8yLzEgMjIvMy8xIDIwLzQvMQpmIDIxLzEvMSAyMy8yLzEgMjQvMy8xIDIyLzQvMQpmIDIzLzEvMSAyNS8yLzEgMjYvMy8xIDI0LzQvMQpmIDI1LzEvMSAyNy8yLzEgMjgvMy8xIDI2LzQvMQpmIDI3LzEvMSAyOS8yLzEgMzAvMy8xIDI4LzQvMQpmIDI5LzEvMSAzMS8yLzEgMzIvMy8xIDMwLzQvMQpmIDMxLzEvMSAzMy8yLzEgMzQvMy8xIDMyLzQvMQpmIDMzLzEvMSAzNS8yLzEgMzYvMy8xIDM0LzQvMQpmIDM1LzEvMSAzNy8yLzEgMzgvMy8xIDM2LzQvMQpmIDM3LzEvMSAzOS8yLzEgNDAvMy8xIDM4LzQvMQpmIDM5LzEvMSA0MS8yLzEgNDIvMy8xIDQwLzQvMQoNCg==</ImportMesh>
+  <InternalTexture assetPath="Assets/Sprites/espinho_macabro.png" />
+</Tiled2Unity>

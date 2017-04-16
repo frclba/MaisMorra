@@ -7,7 +7,7 @@ public class MovePlayer : MonoBehaviour {
 	public Rigidbody2D rd2;
 	public float maxSpeed = 5f;
 	public float moveForce = 365f;
-	public float jumpForce = 1000f;
+	public float jumpForce = 1f;
 	public float dashForce = 1000f;
 	public bool estaNoSolo;
 	public bool canDoubleJump = true;
@@ -18,6 +18,8 @@ public class MovePlayer : MonoBehaviour {
 	public string dash = "Dash_P1";
 	public float dashDelay = 0f;
 	public Animator anim;
+	public bool isAlive = true;
+	public bool isOnGame = true;
 
 	//Set on player in hierarchy
 	public bool faceRight = true;
@@ -29,7 +31,7 @@ public class MovePlayer : MonoBehaviour {
 	}
 	 
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
 
 		float moveHorizontal = Input.GetAxis (horizontalCtrl);
 
@@ -49,7 +51,7 @@ public class MovePlayer : MonoBehaviour {
 		if(Mathf.Abs(rd2.velocity.x) > maxSpeed)
 			rd2.velocity = new Vector2(Mathf.Sign(rd2.velocity.x) * maxSpeed, rd2.velocity.y);
 
-		estaNoSolo = Physics2D.Linecast(transform.position, testSolo.position, 1 << LayerMask.NameToLayer("Water"));  
+		estaNoSolo = Physics2D.OverlapCircle (testSolo.transform.position, 0.1f, 1 << LayerMask.NameToLayer ("Water"));  
 
 		if (Input.GetButtonDown (jump)) {
 			if (estaNoSolo) {
@@ -96,30 +98,10 @@ public class MovePlayer : MonoBehaviour {
 		transform.localScale = theScale;
 	}
 
-	/*void OnTriggerStay2D(Collider2D other){
-
-		Debug.Log ("Está no chão");
-
-		if (other.gameObject.tag == "Solo") {
-			estaNoSolo = true;
-			canDoubleJump = true;
+	void OnCollisionEnter2D (Collision2D other){
+		if (other.gameObject.tag == "Death") {
+			isAlive = false;
+			gameObject.GetComponent<SpriteRenderer>().enabled = false;
 		}
-
-		if (Input.GetButtonDown (jump)) {
-			if (estaNoSolo) {
-				rd2.velocity = new Vector2(rd2.velocity.x, 0);
-				rd2.AddForce (new Vector2(0, jumpForce));
-				canDoubleJump = true;
-				estaNoSolo = false;
-			} else {
-				if (canDoubleJump) {
-					canDoubleJump = false;
-					rd2.velocity = new Vector2(rd2.velocity.x, 0);
-					rd2.AddForce (new Vector2(0, jumpForce));
-				}
-			}
-		}
-
-
-	}*/
+	}
 }
