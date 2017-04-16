@@ -7,7 +7,7 @@ public class MovePlayer : MonoBehaviour {
 	public Rigidbody2D rd2;
 	public float maxSpeed = 5f;
 	public float moveForce = 365f;
-	public float jumpForce = 750f;
+	public float jumpForce = 1000f;
 	public float dashForce = 1000f;
 	public bool estaNoSolo;
 	public bool canDoubleJump = true;
@@ -95,4 +95,31 @@ public class MovePlayer : MonoBehaviour {
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+	/*void OnTriggerStay2D(Collider2D other){
+
+		Debug.Log ("Está no chão");
+
+		if (other.gameObject.tag == "Solo") {
+			estaNoSolo = true;
+			canDoubleJump = true;
+		}
+
+		if (Input.GetButtonDown (jump)) {
+			if (estaNoSolo) {
+				rd2.velocity = new Vector2(rd2.velocity.x, 0);
+				rd2.AddForce (new Vector2(0, jumpForce));
+				canDoubleJump = true;
+				estaNoSolo = false;
+			} else {
+				if (canDoubleJump) {
+					canDoubleJump = false;
+					rd2.velocity = new Vector2(rd2.velocity.x, 0);
+					rd2.AddForce (new Vector2(0, jumpForce));
+				}
+			}
+		}
+
+
+	}*/
 }
