@@ -24,7 +24,7 @@ public class CombatPlayer : MonoBehaviour {
 
 		delayAttack += Time.deltaTime;
 
-		if (delayAttack > 1) {
+		if (delayAttack > 0.5f) {
 			canAttack = true;
 		}
 

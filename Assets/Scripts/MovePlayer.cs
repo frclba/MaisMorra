@@ -19,7 +19,7 @@ public class MovePlayer : MonoBehaviour {
 	public float dashDelay = 0f;
 	public Animator anim;
 	public bool isAlive = true;
-	public bool isOnGame = true;
+	public int id = 0;
 
 	//Set on player in hierarchy
 	public bool faceRight = true;
@@ -51,6 +51,7 @@ public class MovePlayer : MonoBehaviour {
 		if(Mathf.Abs(rd2.velocity.x) > maxSpeed)
 			rd2.velocity = new Vector2(Mathf.Sign(rd2.velocity.x) * maxSpeed, rd2.velocity.y);
 
+		/// =========================== Pulo ================================
 		estaNoSolo = Physics2D.OverlapCircle (testSolo.transform.position, 0.1f, 1 << LayerMask.NameToLayer ("Water"));  
 
 		if (Input.GetButtonDown (jump)) {

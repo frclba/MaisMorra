@@ -16,6 +16,7 @@ public class SceneControlador : MonoBehaviour {
 	void Update () {
 		int count = 0;
 		int i = 0;
+
 		foreach (MovePlayer player in players) {
 			if (player.isAlive == true) {
 				i++;
@@ -24,15 +25,17 @@ public class SceneControlador : MonoBehaviour {
 
 		if (i == 1) {
 			foreach (MovePlayer player in players) {
-
-				if (player.isAlive == true) {
-					count++;
-				}
-
-				Debug.Log ("Win :" + player);
 				count++;
-			
-				SceneManager.LoadScene ("Win");
+				if (player.isAlive == true) {
+					if (player.id == 1) {
+						SceneManager.LoadScene ("Win1");
+					} else {
+						SceneManager.LoadScene ("Win2");
+					}
+				}
+					
+				count++;
+
 			}
 		}
 
