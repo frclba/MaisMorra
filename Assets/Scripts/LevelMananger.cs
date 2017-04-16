@@ -9,9 +9,6 @@ public class LevelMananger : MonoBehaviour {
 		SceneManager.LoadScene(name, LoadSceneMode.Single);
 	}
 
-	public void test(){
-		print("teste");
-	}
 	/*
 	public void QuitRequest(){
 		Application.Quit();

@@ -8,7 +8,7 @@ public class ChooserController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log(id);
+		
 	}
 	
 	// Update is called once per frame
